@@ -73,3 +73,8 @@ To change the default parameters for the propagation script, refer to the follow
 - SERVER: the IP address of the server where the keylogger is named
 - WORM: the filename of the keylogger executable being hosted on the server
 - TARGET_USER/PASSWD: control the username/password combination for propagation via SCP/SSH
+
+
+## FAQ
+Q: Why use expect scripting instead of SSH keys to bypass password prompts?
+A: It is assumed that we do not have prior access to our "targets" to deploy our SSH keys.
