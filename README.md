@@ -18,7 +18,7 @@ The propagation script dynamically determines:
 The simple keylogger is able to capture keystrokes, even if the user is not interacting with it (ex. using their web browser).
 
 ## About CORE
-CORE allows a simple drag-and-drop GUI for quickly simulating a network. In our experiment, we use it to create multiple subnets of vulnerable hosts as well as a "server" to host our keylogger. 
+[CORE](http://www.nrl.navy.mil/itd/ncs/products/core) allows a simple drag-and-drop GUI for quickly simulating a network. In our experiment, we use it to create multiple subnets of vulnerable hosts as well as a "server" to host our keylogger. 
 
 One caveat of using CORE for this type of simulation is that each simulated host runs within the same filesystem as the true host (the VM). This means that all infected hosts actually log keys from the same keyboard. However, the keylogger will work fine under any Linux system which places a keyboard driver under /dev/input.
 
