@@ -64,3 +64,12 @@ Additionally, in our CORE simulation, the keylogger is hosted on a server. This 
     - You need to remove the SSH known hosts file (or the entries for the CORE entities) or else propagate.sh will complain about the RSA fingerprints:
     - Execute (if you are only using the VM for CORE): `sudo rm /root/.ssh/known_hosts` or simply remove the entries for the CORE hosts' IPs.
     - Also, you will have to repeat step 8 and 9 every time you start the simulation.
+
+## Configuring Propagation
+To change the default parameters for the propagation script, refer to the following variables:
+- DEBUG: turns debug messages on and off
+- DIR_PREFIX: the default directory created for CORE when a simulation is run
+  - The format is typically /tmp/pycore.<num> -- in the script <num> is determined at runtime
+- SERVER: the IP address of the server where the keylogger is named
+- WORM: the filename of the keylogger executable being hosted on the server
+- TARGET_USER/PASSWD: control the username/password combination for propagation via SCP/SSH
