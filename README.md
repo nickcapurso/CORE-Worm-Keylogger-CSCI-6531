@@ -36,6 +36,8 @@ Additionally, in our CORE simulation, the keylogger is hosted on a server. This 
   - Reboot
 3. Download each of these files to your CORE VM and open projectNetwork.imn in CORE.
 4. Set the root password to "core" (as this is what the propagation script uses by default for SCP/SSH)
+  - Switch into root without knowing the current password -- execute: `sudo su -`
+  - Execute: `passwd`
 5. Compile logger.c and name the executable "logger":
   - Execute: `gcc logger.c -o logger`
 6. Make propagate.sh executable:
