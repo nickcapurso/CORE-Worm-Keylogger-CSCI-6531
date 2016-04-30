@@ -129,6 +129,8 @@ printArray(){
     fi
 }
 
+echo $(date "+%T.%3N") >> /tmp/propagateStartTimes
+
 # Print out the keyboard driver path
 if [ $DEBUG -eq 0 ]; then
     echo -e "KBD Device:\n$KBD_DEVICE\n"
